@@ -1,17 +1,23 @@
 package creation;
 
+import creation.catalogues.LibraryCatalogue;
+
 public class BookSearchQueryBuilder {
     private String lastName;
     private String firstName;
     private String title;
     private Integer yearPublishedBefore;
     private Integer yearPublishedAfter;
+    private LibraryCatalogue catalogue;
 
     public BookSearchQueryBuilder withAuthorLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
-
+    public BookSearchQueryBuilder withCatalogue(LibraryCatalogue catalogue) {
+        this.catalogue = catalogue;
+        return this;
+    }
     public BookSearchQuery build() {
         return new BookSearchQuery(firstName, lastName, title, yearPublishedAfter, yearPublishedBefore);
     }
