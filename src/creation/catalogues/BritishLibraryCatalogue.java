@@ -2,6 +2,7 @@ package creation.catalogues;
 
 import creation.Book;
 
+import javax.sql.rowset.BaseRowSet;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -11,7 +12,15 @@ public class BritishLibraryCatalogue {
 
   // imagine that each new instance of this object uses more than 500MB of RAM
 
+  private static final BritishLibraryCatalogue catalogueInstance = new BritishLibraryCatalogue();
+
   private final Collection<Book> catalogue = allTheBooks();
+
+  private BritishLibraryCatalogue() {}
+
+  public static BritishLibraryCatalogue getInstance() {
+    return catalogueInstance;
+  }
 
   public List<Book> searchFor(String query) {
     return catalogue.stream()
